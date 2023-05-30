@@ -1,0 +1,42 @@
+NixOS is a Linux distribution that uses the Nix package manager to manage software packages and system configurations. Here's a step-by-step guide on how to use NixOS:
+
+Installation: Start by downloading the NixOS ISO image from the official website (https://nixos.org/) and create a bootable USB drive.
+
+Boot from USB: Insert the USB drive into your computer and restart it. Access the boot menu or the BIOS settings to prioritize booting from the USB drive. Select the NixOS installation media to boot into the live environment.
+
+Partitioning: Once you're in the live environment, use a partitioning tool like fdisk or parted to create the necessary partitions for NixOS. You'll typically need a root partition ("/") and a swap partition. Format the partitions with the appropriate file systems.
+
+Configuration: NixOS uses a declarative configuration model. The main configuration file is located at /etc/nixos/configuration.nix. Open this file using a text editor and configure the system according to your preferences. You can set options such as the system hostname, user accounts, network settings, and installed packages.
+
+Installation: After configuring the system, run the NixOS installer by executing the following command in the terminal:
+
+Copy code
+sudo nixos-install
+This will install NixOS onto the specified root partition.
+
+Bootloader: Once the installation is complete, configure the bootloader to boot into NixOS. By default, NixOS uses GRUB as the bootloader. You can customize the bootloader settings in the configuration file.
+
+Reboot: After setting up the bootloader, reboot your computer and remove the USB drive. NixOS should now boot from the installed system.
+
+Package management: NixOS uses the Nix package manager to manage software packages. You can use the following commands to install and manage packages:
+
+To install a package:
+css
+Copy code
+sudo nix-env -i <package-name>
+To uninstall a package:
+go
+Copy code
+sudo nix-env -e <package-name>
+To search for a package:
+go
+Copy code
+nix search <package-name>
+System upgrades: NixOS has a unique feature called "atomic upgrades," which allows you to roll back to a previous system configuration if something goes wrong during an upgrade. To update the system, use the following command:
+
+arduino
+Copy code
+sudo nixos-rebuild switch
+This command will fetch the latest package definitions and update the system accordingly.
+
+That's a basic overview of how to use NixOS. The system provides many advanced features, such as declarative system configuration, reproducible builds, and isolated environments. You can refer to the official NixOS documentation for more detailed information and advanced usage.
